@@ -1,0 +1,68 @@
+<?xml version="1.0"?> 
+<orders> 
+    <order oid=2384> 
+        <customerInfo>
+			<customerName>Alex</customerName>
+			<email> alex@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="Y" itemid="SD93"> 
+            <name>Flying By Roller Skates</name> 
+            <price>25.00</price> 
+            <qty>25</qty> 
+        </item> 
+        <item instock="N" itemid="B12"> 
+            <name>Bounce-o Ball</name> 
+            <price>.35</price> 
+            <qty>150</qty> 
+        </item> 
+		<shipping details> for the package < 4lb the cost is $5 & for the other packages it is $12 </shipping details>
+    </order> 
+    <order oid=5268> 
+        <customerInfo>
+			<customerName>Peter</customerName>
+			<email> peter@xyz.com </email>
+		</customerInfo>
+        <status>complete</status> 
+        <item instock="Y" itemid="Q52"> 
+            <name>Crash N Burn Skis</name> 
+            <price>20</price> 
+            <qty>10</qty> 
+        </item> 
+    </order> 
+	<order oid=3384> 
+        <customerInfo>
+			<customerName>Mary</customerName>
+			<email> Mary@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="Y" itemid="PS93"> 
+            <name>All Star Shoe</name> 
+            <price>55.00</price> 
+            <qty>12</qty> 
+        </item> 
+        <item instock="Y" itemid="M12"> 
+            <name>All Star Hat</name> 
+            <price>44.35</price> 
+            <qty>15</qty> 
+        </item> 
+    </order> 
+	<order oid=9008> 
+		<customerInfo>
+			<customerName>Sara</customerName>
+			<email> sara@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="N" itemid="F32"> 
+            <name>Fancy Shirt</name> 
+            <price>120</price> 
+            <qty>100</qty> 
+        </item> 
+		<item instock="Y" itemid="Q52"> 
+            <name>Crash N Burn Skis</name> 
+            <price>20</price> 
+            <qty>5</qty> 
+        </item>
+		<shipping details> for the package < 4lb the cost is $5 & for the other packages it is $12 </shipping details>		
+    </order> 
+</orders> 
