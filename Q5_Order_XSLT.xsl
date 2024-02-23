@@ -14,17 +14,17 @@
                         margin: 0;
                         padding: 10px;
                     }
-        
                     th {
                         background-color: blanchedalmond;
-                    }
-        
-                    th, td {
                         text-align: center;
+                    }
+                    th, td {
                         padding: 8px;
                         border: 1px solid;
                     }
-        
+                    td {
+                        text-align: left;
+                    }
                 </style>
             </head>
             <body>
