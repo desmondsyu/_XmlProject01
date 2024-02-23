@@ -1,4 +1,16 @@
 <?xml version="1.0"?> 
+<!-- 
+/*****************************************************************************
+* ITC5202 – Project1
+* I declare that this assignment is my own work in accordance with Humber Academic
+* Policy.
+* No part of this assignment has been copied manually or electronically from any other
+* source (including web sites) or distributed to other students.
+*
+* Name: Giovanny Avillaneda Student ID: N01604159  Date: Feb-22-2024
+* Name: Kexin Zhu           Student ID: N01621302  Date: Feb-22-2024
+*****************************************************************************/
+-->
 <orders> 
     <order oid=2384> 
         <customerInfo>

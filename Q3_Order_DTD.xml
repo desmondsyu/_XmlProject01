@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-
+<!-- 
 /*****************************************************************************
 * ITC5202 – Project1
 * I declare that this assignment is my own work in accordance with Humber Academic
@@ -10,7 +10,7 @@
 * Name: Giovanny Avillaneda Student ID: N01604159  Date: Feb-22-2024
 * Name: Kexin Zhu           Student ID: N01621302  Date: Feb-22-2024
 *****************************************************************************/
-
+-->
 <!DOCTYPE orders [
     <!ELEMENT orders (order+)>
     <!ELEMENT order (customerInfo, status, item+, shippingDetails*)>
