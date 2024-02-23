@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!-- 
+/*****************************************************************************
+* ITC5202 – Project1
+* I declare that this assignment is my own work in accordance with Humber Academic
+* Policy.
+* No part of this assignment has been copied manually or electronically from any other
+* source (including web sites) or distributed to other students.
+*
+* Name: Giovanny Avillaneda Student ID: N01604159  Date: Feb-22-2024
+* Name: Kexin Zhu           Student ID: N01621302  Date: Feb-22-2024
+*****************************************************************************/
+-->
+<!DOCTYPE orders [
+    <!ELEMENT orders (order+)>
+    <!ATTLIST orders xmlns:xsi CDATA #REQUIRED>
+    <!ATTLIST orders xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
+    <!ELEMENT order (customerInfo, status, item+, shippingDetails*)>
+    <!ATTLIST order oid CDATA #REQUIRED>
+    <!ELEMENT customerInfo (customerName, email)>
+    <!ELEMENT customerName (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT status (#PCDATA)>
+    <!ELEMENT item (name, price, qty)>
+    <!ATTLIST item instock CDATA #REQUIRED>
+    <!ATTLIST item itemid CDATA #REQUIRED>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT qty (#PCDATA)>
+    <!ELEMENT shippingDetails (#PCDATA)>
+]>
+<orders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="./Q4_OrderSchema.xsd">
+    <order oid="2384"> 
+        <customerInfo>
+			<customerName>Alex</customerName>
+			<email> alex@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="Y" itemid="SD93"> 
+            <name>Flying By Roller Skates</name> 
+            <price>25.00</price> 
+            <qty>25</qty> 
+        </item> 
+        <item instock="N" itemid="B12"> 
+            <name>Bounce-o Ball</name> 
+            <price>.35</price> 
+            <qty>150</qty> 
+        </item> 
+		<shippingDetails> for the package &lt; 4lb the cost is $5 &amp; for the other packages it is $12 </shippingDetails>
+    </order> 
+    <order oid="5268"> 
+        <customerInfo>
+			<customerName>Peter</customerName>
+			<email> peter@xyz.com </email>
+		</customerInfo>
+        <status>complete</status> 
+        <item instock="Y" itemid="Q52"> 
+            <name>Crash N Burn Skis</name> 
+            <price>20</price> 
+            <qty>10</qty> 
+        </item> 
+    </order> 
+	<order oid="3384"> 
+        <customerInfo>
+			<customerName>Mary</customerName>
+			<email> Mary@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="Y" itemid="PS93"> 
+            <name>All Star Shoe</name> 
+            <price>55.00</price> 
+            <qty>12</qty> 
+        </item> 
+        <item instock="Y" itemid="M12"> 
+            <name>All Star Hat</name> 
+            <price>44.35</price> 
+            <qty>15</qty> 
+        </item> 
+    </order> 
+	<order oid="9008"> 
+		<customerInfo>
+			<customerName>Sara</customerName>
+			<email> sara@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="N" itemid="F32"> 
+            <name>Fancy Shirt</name>
+            <price>120</price>
+            <qty>100</qty>
+        </item> 
+		<item instock="Y" itemid="Q52"> 
+            <name>Crash N Burn Skis</name> 
+            <price>20</price> 
+            <qty>5</qty> 
+        </item>
+		<shippingDetails> for the package &lt; 4lb the cost is $5 &amp; for the other packages it is $12 </shippingDetails>		
+    </order>
+    <!-- Add 2 new orders -->
+    <order oid="6457"> 
+		<customerInfo>
+			<customerName>John</customerName>
+			<email> john@xyz.com </email>
+		</customerInfo>
+        <status>complete</status> 
+        <item instock="N" itemid="J11"> 
+            <name>Fancy Pants</name>
+            <price>190</price>
+            <qty>25</qty>
+        </item> 
+		<item instock="Y" itemid="M02"> 
+            <name>Oldschool Skirts</name> 
+            <price>90.00</price> 
+            <qty>20</qty> 
+        </item>
+		<shippingDetails> for the package &lt; 4lb the cost is $5 &amp; for the other packages it is $12 </shippingDetails>		
+    </order>
+    <order oid="1094"> 
+		<customerInfo>
+			<customerName>Zoey</customerName>
+			<email> zoey@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="Y" itemid="PS93"> 
+            <name>All Star Shoe</name> 
+            <price>55.00</price> 
+            <qty>7</qty> 
+        </item>
+		<item instock="N" itemid="A33"> 
+            <name>Sans Name Gloves</name> 
+            <price>12.5</price> 
+            <qty>70</qty> 
+        </item>	
+    </order>
+</orders> 

@@ -1,94 +1,99 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Order Table JS</title>
-        <!-- Style tag to set CSS to table -->
-        <style>
-            table {
-				font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-				border-collapse: collapse;
-				width: auto;
-				margin: 0;
-				padding: 10px;
-			}
-			th {
-				background-color: blanchedalmond;
-                text-align: center;
-			}
-			th, td {
-				padding: 8px;
-				border: 1px solid;
-			}
-            td {
-                text-align: left;
+
+<head>
+    <title>Order Table JS</title>
+    <!-- Style tag to set CSS to table -->
+    <style>
+        table {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            border-collapse: collapse;
+            width: auto;
+            margin: 0;
+            padding: 10px;
+        }
+
+        th {
+            background-color: blanchedalmond;
+            text-align: center;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid;
+        }
+
+        td {
+            text-align: left;
+        }
+    </style>
+
+    <!-- The script tag to include JavaScript code -->
+    <script>
+        // Creating a new XMLHttpRequest object to handle HTTP requests
+        const xhttp = new XMLHttpRequest();
+
+        // Setting up a callback function to handle changes in the state of the XMLHttpRequest object 
+        xhttp.onreadystatechange = function () {
+            // Check if the request is complete (readyState = 4) and successful (status = 200)
+            if (this.readyState == 4 && this.status == 200) {
+                // Call the displayData function with the responseXML as an argument
+                displayData(this.responseXML);
             }
-        </style>
-        
-        <!-- The script tag to include JavaScript code -->
-        <script>
-            // Creating a new XMLHttpRequest object to handle HTTP requests
-            const xhttp = new XMLHttpRequest();
+        };
 
-            // Setting up a callback function to handle changes in the state of the XMLHttpRequest object 
-            xhttp.onreadystatechange = function () {
-                // Check if the request is complete (readyState = 4) and successful (status = 200)
-                if (this.readyState == 4 && this.status == 200) {
-                    // Call the displayData function with the responseXML as an argument
-                    displayData(this.responseXML);
-                }
-            };
+        // Configuring the XMLHttpRequest object for a GET request to the specified XML file
+        xhttp.open("GET", "./Q6_Order.xml", true);
 
-            // Configuring the XMLHttpRequest object for a GET request to the specified XML file
-            xhttp.open("GET", "./Q6_Order.xml", true);
+        // Sending the XMLHttpRequest
+        xhttp.send();
 
-            // Sending the XMLHttpRequest
-            xhttp.send();
-            
-            // loop 
-            const displayData = (xmlDoc) => {
-                let tableElement = document.getElementById("table");
-                
-                // Get all item nodes from the XML document
-                const itemNodes = xmlDoc.getElementsByTagName("item");
+        // loop 
+        const displayData = (xmlDoc) => {
+            let tableElement = document.getElementById("table");
 
-                for(let i = 0; i < itemNodes.length; i++){
-                    // get the current item node
-                    const item = itemNodes[i];
+            // Get all item nodes from the XML document
+            const itemNodes = xmlDoc.getElementsByTagName("item");
 
-                    // Parse the item node to extract information
-                    const parseItems = parseItem(item);
+            for (let i = 0; i < itemNodes.length; i++) {
+                // get the current item node
+                const item = itemNodes[i];
 
-                    // Create a table row element with the parsed item's information
-                    const rowElement = createRow(parseItems);
+                // Parse the item node to extract information
+                const parseItems = parseItem(item);
 
-                    // append the row to the table
-                    tableElement.appendChild(rowElement);
- 
-                }
-            };
+                // Create a table row element with the parsed item's information
+                const rowElement = createRow(parseItems);
 
-            // function to parse
-            const parseItem = (item) => {
-                // Extracting information from the item node and it's related nodes
-                const oid = item.parentNode.getAttribute("oid");
-                const customerName = item.parentNode.getElementsByTagName("customerInfo")[0].getElementsByTagName("customerName")[0].childNodes[0].nodeValue;
-                const email = item.parentNode.getElementsByTagName("customerInfo")[0].getElementsByTagName("email")[0].childNodes[0].nodeValue;
-                const status = item.parentNode.getElementsByTagName("status")[0].childNodes[0].nodeValue;
-                const instock = item.getAttribute("instock");
-                const itemid = item.getAttribute("itemid");
-                const name = item.getElementsByTagName("name")[0].childNodes[0].nodeValue;
-                const price = item.getElementsByTagName("price")[0].childNodes[0].nodeValue;
-                const qty = item.getElementsByTagName("qty")[0].childNodes[0].nodeValue;
-                // Catch absent values
-                const shippingDetails = item.parentNode.getElementsByTagName("shippingDetails")[0] ? item.parentNode.getElementsByTagName("shippingDetails")[0].childNodes[0].nodeValue:"";
-                
-                // Returning an object with the extracted information of every detail of the orders
-                return { oid, customerName, email, status, instock, itemid, name, price, qty, shippingDetails };
-            };
-            
-            // function to create row element with the extracted information
-            const createRow = (parseItems) => 
-                stringToNode(`<tr>
+                // append the row to the table
+                tableElement.appendChild(rowElement);
+
+            }
+        };
+
+        // function to parse
+        const parseItem = (item) => {
+            // Extracting information from the item node and it's related nodes
+            const oid = item.parentNode.getAttribute("oid");
+            const customerName = item.parentNode.getElementsByTagName("customerInfo")[0].getElementsByTagName("customerName")[0].childNodes[0].nodeValue;
+            const email = item.parentNode.getElementsByTagName("customerInfo")[0].getElementsByTagName("email")[0].childNodes[0].nodeValue;
+            const status = item.parentNode.getElementsByTagName("status")[0].childNodes[0].nodeValue;
+            const instock = item.getAttribute("instock");
+            const itemid = item.getAttribute("itemid");
+            const name = item.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            const price = item.getElementsByTagName("price")[0].childNodes[0].nodeValue;
+            const qty = item.getElementsByTagName("qty")[0].childNodes[0].nodeValue;
+            // Catch absent values
+            const shippingDetails = item.parentNode.getElementsByTagName("shippingDetails")[0] ? item.parentNode.getElementsByTagName("shippingDetails")[0].childNodes[0].nodeValue : "";
+
+            // Returning an object with the extracted information of every detail of the orders
+            return { oid, customerName, email, status, instock, itemid, name, price, qty, shippingDetails };
+        };
+
+        // function to create row element with the extracted information
+        const createRow = (parseItems) =>
+            stringToNode(`<tr>
                     <td>${parseItems.oid}</td>
                     <td>${parseItems.customerName}</td>
                     <td>${parseItems.email}</td>
@@ -102,40 +107,39 @@
                 </tr>`);
 
 
-            // convert string to DOM node
-            const stringToNode = (html) => {
-                // Creating a template element
-                const template = document.createElement(`template`);
-    
-                // Trimming the input HTML string and setting it as the template's innerHTML
-                html = html.trim();
-                template.innerHTML = html;
+        // convert string to DOM node
+        const stringToNode = (html) => {
+            // Creating a template element
+            const template = document.createElement(`template`);
 
-                // Returning the first child of the template's content
-                return template.content.firstChild;
-            };
-        </script>
-    </head>
+            // Trimming the input HTML string and setting it as the template's innerHTML
+            html = html.trim();
+            template.innerHTML = html;
 
-    <body>
-        <!-- Table title-->
-        <h1>List of all Order Details</h1>
-        <!-- Table header -->
-        <table id="table">
-            <tr>
-                <tr>
-                    <th>Order Id</th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Item Instock</th>
-                    <th>Item Id</th>
-                    <th>Item Name</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>shippingDetails</th>
-                </tr>
-            </tr>
-        </table>
-    </body>
+            // Returning the first child of the template's content
+            return template.content.firstChild;
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Table title-->
+    <h1>List of all Order Details</h1>
+    <!-- Table header -->
+    <table id="table">
+        <tr>
+            <th>Order Id</th>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Item Instock</th>
+            <th>Item Id</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>shippingDetails</th>
+        </tr>
+    </table>
+</body>
+
 </html>
