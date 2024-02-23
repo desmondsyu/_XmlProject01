@@ -42,7 +42,7 @@
                         <th>Qty</th>
                         <th>shippingDetails</th>
                     </tr>
-                    <xsl:for-each select="/orders/order/item/">
+                    <xsl:for-each select="/orders/order/item">
                     <tr>
                         <td><xsl:value-of select="../@oid" /></td>
                         <td><xsl:value-of select="../customerInfo/customerName" /></td>
