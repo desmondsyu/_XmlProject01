@@ -39,7 +39,6 @@
   </p>
   <h3>List of all information about the item</h3>
 
-  <!-- hide table by default -->
   <table id="table"></table>
 
   <script>
@@ -67,6 +66,7 @@
 
       var tableElement = `<tr>
                             <th>Order Id</th>
+                            <th>Status</th>
                             <th>Item Id</th>
                             <th>Item Name</th>
                             <th>Price</th>
@@ -100,6 +100,7 @@
 
       // Extracting information from the item node and it's related nodes
       const oid = item.parentNode.getAttribute("oid");
+      const status = item.parentNode.getAttribute("status");
       const itemid = item.getAttribute("itemid");
       const name = item.getElementsByTagName("name")[0].childNodes[0].nodeValue;
       const price = item.getElementsByTagName("price")[0].childNodes[0].nodeValue;
@@ -108,6 +109,7 @@
       // return the string
       return `<tr>
                 <td>${oid}</td>
+                <td>${status}</td>
                 <td>${itemid}</td>
                 <td>${name}</td>
                 <td>${price}</td>
