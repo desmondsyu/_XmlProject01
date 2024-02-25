@@ -28,6 +28,10 @@
         td {
             text-align: left;
         }
+
+        .out-of-stock {
+            background-color: yellow; 
+        }
     </style>
 </head>
 
@@ -122,23 +126,27 @@
         };
 
         // function to create row element with the extracted information
-        const createRow = (parseItems) =>
-            stringToNode(`<tr>
+        const createRow = (parseItems) => {
+            const instockClass = parseItems.instock === 'N' ? 'out-of-stock' : '';
+            const rowHTML = `<tr>
                         <td>${parseItems.oid}</td>
                         <td>${parseItems.customerName}</td>
                         <td>${parseItems.email}</td>
                         <td>${parseItems.status}</td>
-                        <td>${parseItems.instock}</td>
+                        <td class="${instockClass}">${parseItems.instock}</td>
                         <td>${parseItems.itemid}</td>
                         <td>${parseItems.name}</td>
                         <td>${parseItems.price}</td>
                         <td>${parseItems.qty}</td>
                         <td>${parseItems.shippingDetails}</td>
-                    </tr>`);
-
+                    </tr>`;
+            
+            return stringToNode(rowHTML);
+        }
 
         // convert string to DOM node
         const stringToNode = (html) => {
+
             // Creating a template element
             const template = document.createElement(`template`);
 
