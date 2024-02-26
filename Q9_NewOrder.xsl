@@ -30,7 +30,7 @@
   </xsl:template>
   
   <xsl:template match="order">
-    <h2>Order Information</h2>
+    <h1>Order Information</h1>
     <table>
       <tr>
         <th>Order ID</th>
