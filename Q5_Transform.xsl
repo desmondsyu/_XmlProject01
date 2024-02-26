@@ -64,7 +64,6 @@
       <td><xsl:value-of select="name"/></td>
       <td><xsl:value-of select="price"/></td>
       <td><xsl:value-of select="qty"/></td>
-      <td><xsl:value-of select="../shipping_details"/></td>
     </tr>
   </xsl:template>
 
