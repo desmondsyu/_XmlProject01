@@ -1,4 +1,5 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="Q9_NewOrder.xsl"?>
 <!-- 
 /*****************************************************************************
 * ITC5202 – Project1
@@ -7,12 +8,30 @@
 * No part of this assignment has been copied manually or electronically from any other
 * source (including web sites) or distributed to other students.
 *
-* Name: Giovanny Avillaneda Student ID: N01604159  Date: Feb-22-2024
-* Name: Kexin Zhu           Student ID: N01621302  Date: Feb-22-2024
+* Name: Giovanny Avillaneda Student ID: N01604159  Date: Feb-26-2024
+* Name: Kexin Zhu           Student ID: N01621302  Date: Feb-26-2024
 *****************************************************************************/
 -->
-<?xml-stylesheet href="Q9_NewOrder.xsl" type="text/xsl"?>
-<orders>
+<!DOCTYPE orders [
+    <!ELEMENT orders (order+)>
+    <!ATTLIST orders xmlns:xsi CDATA #REQUIRED>
+    <!ATTLIST orders xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
+    <!ELEMENT order (customerInfo, status, item+, shippingDetails*)>
+    <!ATTLIST order oid CDATA #REQUIRED>
+    <!ELEMENT customerInfo (customerName, email)>
+    <!ELEMENT customerName (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT status (#PCDATA)>
+    <!ELEMENT item (name, price, qty)>
+    <!ATTLIST item instock CDATA #REQUIRED>
+    <!ATTLIST item itemid CDATA #REQUIRED>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ELEMENT qty (#PCDATA)>
+    <!ELEMENT shippingDetails (#PCDATA)>
+]>
+<orders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="./Q9_NewOrder.xsl">
     <order oid="2384"> 
         <customerInfo>
 			<customerName>Alex</customerName>
@@ -67,9 +86,9 @@
 		</customerInfo>
         <status>pending</status> 
         <item instock="N" itemid="F32"> 
-            <name>Fancy Shirt</name> 
-            <price>120</price> 
-            <qty>100</qty> 
+            <name>Fancy Shirt</name>
+            <price>120</price>
+            <qty>100</qty>
         </item> 
 		<item instock="Y" itemid="Q52"> 
             <name>Crash N Burn Skis</name> 
@@ -77,5 +96,41 @@
             <qty>5</qty> 
         </item>
 		<shippingDetails> for the package &lt; 4lb the cost is $5 &amp; for the other packages it is $12 </shippingDetails>		
-    </order> 
+    </order>
+    <!-- Add 2 new orders -->
+    <order oid="6457"> 
+		<customerInfo>
+			<customerName>John</customerName>
+			<email> john@xyz.com </email>
+		</customerInfo>
+        <status>complete</status> 
+        <item instock="N" itemid="J11"> 
+            <name>Fancy Pants</name>
+            <price>190</price>
+            <qty>25</qty>
+        </item> 
+		<item instock="Y" itemid="M02"> 
+            <name>Oldschool Skirts</name> 
+            <price>90.00</price> 
+            <qty>20</qty> 
+        </item>
+		<shippingDetails> for the package &lt; 4lb the cost is $5 &amp; for the other packages it is $12 </shippingDetails>		
+    </order>
+    <order oid="1094"> 
+		<customerInfo>
+			<customerName>Zoey</customerName>
+			<email> zoey@xyz.com </email>
+		</customerInfo>
+        <status>pending</status> 
+        <item instock="Y" itemid="PS93"> 
+            <name>All Star Shoe</name> 
+            <price>55.00</price> 
+            <qty>7</qty> 
+        </item>
+		<item instock="N" itemid="A33"> 
+            <name>Sans Name Gloves</name> 
+            <price>12.5</price> 
+            <qty>70</qty> 
+        </item>	
+    </order>
 </orders> 
