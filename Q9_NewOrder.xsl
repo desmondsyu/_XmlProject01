@@ -24,54 +24,55 @@
         </style>
       </head>
       <body>
-        <h1>Order Information</h1>
-        <table>
-          <tr>
-            <th>Order ID</th>
-            <th>Customer Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Shipping Cost</th>
-          </tr>
-          <xsl:apply-templates select="order"/>
-        </table>
+        <xsl:apply-templates/>
       </body>
     </html>
   </xsl:template>
   
   <xsl:template match="order">
-    <tr>
-      <td><xsl:value-of select="@oid"/></td>
-      <td><xsl:value-of select="customerInfo/customerName"/></td>
-      <td><xsl:value-of select="customerInfo/email"/></td>
-      <td><xsl:value-of select="status"/></td>
-      <td>
-        <xsl:choose>
-          <xsl:when test="shipping">
-            <xsl:value-of select="shipping"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>Shipping cost not specified</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="5">
-        <table>
-          <tr>
-            <th>Item ID</th>
-            <th>Item Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Status</th>
-          </tr>
-          <xsl:apply-templates select="item">
-            <xsl:sort select="name"/>
-          </xsl:apply-templates>
-        </table>
-      </td>
-    </tr>
+    <h2>Order Information</h2>
+    <table>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Shipping Cost</th>
+      </tr>
+      <tr>
+        <td><xsl:value-of select="@oid"/></td>
+        <td><xsl:value-of select="customerInfo/customerName"/></td>
+        <td><xsl:value-of select="customerInfo/email"/></td>
+        <td><xsl:value-of select="status"/></td>
+        <td>
+          <xsl:choose>
+            <xsl:when test="shippingDetails">
+              <xsl:value-of select="shippingDetails"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>Shipping cost not specified</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <h3>Items</h3>
+          <table>
+            <tr>
+              <th>Item ID</th>
+              <th>Item Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Status</th>
+            </tr>
+            <xsl:apply-templates select="item">
+              <xsl:sort select="name"/>
+            </xsl:apply-templates>
+          </table>
+        </td>
+      </tr>
+    </table>
   </xsl:template>
   
   <xsl:template match="item">
