@@ -64,7 +64,7 @@
               <th>Item Name</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Status</th>
+              <th>In Stock</th>
             </tr>
             <xsl:apply-templates select="item">
               <xsl:sort select="name"/>

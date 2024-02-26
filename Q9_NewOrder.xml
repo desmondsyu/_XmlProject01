@@ -14,8 +14,6 @@
 -->
 <!DOCTYPE orders [
     <!ELEMENT orders (order+)>
-    <!ATTLIST orders xmlns:xsi CDATA #REQUIRED>
-    <!ATTLIST orders xsi:noNamespaceSchemaLocation CDATA #REQUIRED>
     <!ELEMENT order (customerInfo, status, item+, shippingDetails*)>
     <!ATTLIST order oid CDATA #REQUIRED>
     <!ELEMENT customerInfo (customerName, email)>
@@ -30,8 +28,8 @@
     <!ELEMENT qty (#PCDATA)>
     <!ELEMENT shippingDetails (#PCDATA)>
 ]>
-<orders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="./Q9_NewOrder.xsl">
+<?xml-stylesheet href="./Q9_NewOrder.xsl" type="text/xsl"?>
+<orders>
     <order oid="2384"> 
         <customerInfo>
 			<customerName>Alex</customerName>
