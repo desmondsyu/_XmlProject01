@@ -28,7 +28,6 @@
     <!ELEMENT qty (#PCDATA)>
     <!ELEMENT shippingDetails (#PCDATA)>
 ]>
-<?xml-stylesheet href="./Q9_NewOrder.xsl" type="text/xsl"?>
 <orders>
     <order oid="2384"> 
         <customerInfo>
