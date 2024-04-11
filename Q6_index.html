@@ -85,6 +85,8 @@
             const price = item.getElementsByTagName("price")[0].childNodes[0].nodeValue;
             const qty = item.getElementsByTagName("qty")[0].childNodes[0].nodeValue;
             // Catch absent values
+            //  extract the value of the first child node of the <shippingDetails> element
+            // within the parent node of item, if it exists. If not, it assigns an empty string to shippingDetails
             const shippingDetails = item.parentNode.getElementsByTagName("shippingDetails")[0] ? item.parentNode.getElementsByTagName("shippingDetails")[0].childNodes[0].nodeValue : "";
 
             // Returning an object with the extracted information of every detail of the orders
